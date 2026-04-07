@@ -1,93 +1,97 @@
 ////
 ///
 //https://stackoverflow.com/questions/6316987/should-struct-definitions-go-in-h-or-c-file
+//https://stackoverflow.com/questions/6316987/should-struct-definitions-go-in-h-or-c-file
 
-
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "STATS.h"
 
-int main() {
-
-    Character characters[4]; // 0 = main, 1-3 = sidekicks
-    int i;
-    // Initialize health
-    for (i = 0; i < 4; i++) {
-        characters[i].health = 100;
-    }
-
-    int Choice;
+void OtherCharacterSelection(Character team[4]) {
     int x;
-    // Loop for Character2, Character3, Character4
-    for (x = 1; x <= 3; x++) {
 
-        printf("\nSelect sidekick %d:\n", x);
-        printf("(1) Banker, (2) Hunter, (3) Farmer, (4) Doctor, (5) Carpenter, (6) Lawyer\n");
+    for (x = 1; x <= 3; x++) { // 1–3 = sidekicks
+        int Choice;
 
-        scanf("%d", &Choice);
+        while (1) {
+            printf("\nSelect sidekick %d:\n", x);
+            printf("(1) Banker, (2) Hunter, (3) Farmer, (4) Doctor, (5) Carpenter, (6) Lawyer\n");
 
-        // Input validation loop
-        while (Choice < 1 || Choice > 6) {
-            printf("Invalid choice. Enter 1�6: ");
-            scanf("%d", &Choice);
-        }
+            if (scanf("%d", &Choice) != 1) {
+                printf("Invalid input. Enter a number 1-6.\n");
+                while (getchar() != '\n'); // clear buffer
+                continue;
+            }
 
-        if (Choice == 1) {
-            strcpy(characters[x].name, "Banker");
-            characters[x].dabloons = 1600;
-            characters[x].LuckOfIllness = 0.5;
-            characters[x].resources = 10;
-        }
-        else if (Choice == 2) {
-            strcpy(characters[x].name, "Hunter");
-            characters[x].dabloons = 450;
-            characters[x].LuckOfIllness = 0.4;
-            characters[x].resources = 5;
-        }
-        else if (Choice == 3) {
-            strcpy(characters[x].name, "Farmer");
-            characters[x].dabloons = 400;
-            characters[x].LuckOfIllness = 0.8;
-            characters[x].resources = 10;
-        }
-        else if (Choice == 4) {
-            strcpy(characters[x].name, "Doctor");
-            characters[x].dabloons = 500;
-            characters[x].LuckOfIllness = 1.0;
-            characters[x].resources = 10;
-        }
-        else if (Choice == 5) {
-            strcpy(characters[x].name, "Carpenter");
-            characters[x].dabloons = 800;
-            characters[x].LuckOfIllness = 0.4;
-            characters[x].resources = 10;
-        }
-        else if (Choice == 6) {
-            strcpy(characters[x].name, "Lawyer");
-            characters[x].dabloons = 700;
-            characters[x].LuckOfIllness = 0.6;
-            characters[x].resources = 10;
+            if (Choice < 1 || Choice > 6) {
+                printf("Choice out of range. Enter 1-6.\n");
+                continue;
+            }
+
+            break; // valid input
         }
 
-        printf("Added %s with %d dabloons.\n",
-               characters[x].name,
-               characters[x].dabloons);
+        // Assign stats based on choice
+        switch (Choice) {
+            case 1:
+                strcpy(team[x].name, "Banker");
+                team[x].dabloons = 1600;
+                team[x].LuckOfIllness = 0.5;
+                team[x].resources = 50;
+                break;
+            case 2:
+                strcpy(team[x].name, "Hunter");
+                team[x].dabloons = 450;
+                team[x].LuckOfIllness = 0.4;
+                team[x].resources = 90;
+                break;
+            case 3:
+                strcpy(team[x].name, "Farmer");
+                team[x].dabloons = 400;
+                team[x].LuckOfIllness = 0.8;
+                team[x].resources = 100;
+                break;
+            case 4:
+                strcpy(team[x].name, "Doctor");
+                team[x].dabloons = 500;
+                team[x].LuckOfIllness = 1.0;
+                team[x].resources = 30;
+                break;
+            case 5:
+                strcpy(team[x].name, "Carpenter");
+                team[x].dabloons = 800;
+                team[x].LuckOfIllness = 0.4;
+                team[x].resources = 75;
+                break;
+            case 6:
+                strcpy(team[x].name, "Lawyer");
+                team[x].dabloons = 700;
+                team[x].LuckOfIllness = 0.6;
+                team[x].resources = 25;
+                break;
+        }
+
+        team[x].health = 100; // ensure health is set
+        printf("Added %s with %d dabloons.\n", team[x].name, team[x].dabloons);
     }
 
-    // Final array output
-    printf("\n--- Your Team ---\n");
-    int j;
-    for ( j = 1; j <= 3; j++) {
-        printf("Character %d: %s | Health: %d | Dabloons: %d | Resources: %d\n",
-               j + 1,
-               characters[j].name,
-               characters[j].health,
-               characters[j].dabloons,
-               characters[j].resources);
+    // Print final team
+    int j; 
+    for (j = 1; j <= 3; j++) {
+         printf("------------------------------------------------------------------------------------\n     
+             Character %d: %s | Health: %d | Dabloons: %d | Resources: %d\n-----------------------------------
+             -------------------------------------------------\n\n",
+               j, team[j].name, team[j].health, team[j].dabloons, team[j].resources);
     }
+}
 
+int main() {
+    Character team[4]; // 0 = main, 1–3 = sidekicks
+    OtherCharacterSelection(team);
+
+    // team array can now be used later
     return 0;
 }
-//MainCharacter, Character2, Character3, Character4; rest will be decided in another file
-// do array to keep track of stats in main to be able to alter them throughout gameplay - health, resources, dabloons
+// - this is just checking it worked
+// do array to keep track of stats in main to be able to alter them t
