@@ -1,7 +1,6 @@
 ////
 ///
 //https://stackoverflow.com/questions/6316987/should-struct-definitions-go-in-h-or-c-file
-//https://stackoverflow.com/questions/6316987/should-struct-definitions-go-in-h-or-c-file
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -86,12 +85,9 @@ void OtherCharacterSelection(Character team[4]) {
     }
 }
 
-int main() {
-    Character team[4]; // 0 = main, 1–3 = sidekicks
-    OtherCharacterSelection(team);
-
-    // team array can now be used later
-    return 0;
-}
-// - this is just checking it worked
-// do array to keep track of stats in main to be able to alter them t
+//int main() {
+  //  Character team[4]; // 0 = main, 1–3 = sidekicks
+    //OtherCharacterSelection(team);      // team array can now be used later
+    //return 0;
+//}
+// - this is just checking it works in main
