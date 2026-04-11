@@ -78,9 +78,7 @@ void OtherCharacterSelection(Character team[4]) {
     // Print final team
     int j; 
     for (j = 1; j <= 3; j++) {
-         printf("------------------------------------------------------------------------------------\n     
-             Character %d: %s | Health: %d | Dabloons: %d | Resources: %d\n-----------------------------------
-             -------------------------------------------------\n\n",
+         printf("------------------------------------------------------------------------------------\nCharacter %d: %s | Health: %d | Dabloons: %d | Resources: %d\n------------------------------------------------------------------------------------\n\n",
                j, team[j].name, team[j].health, team[j].dabloons, team[j].resources);
     }
 }
