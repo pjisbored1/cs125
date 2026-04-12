@@ -24,7 +24,7 @@ Comment	:
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include "routeA.h"
+#include "routeB.h"
 /*
 typedef struct SingleEvent{
 	int threshold;
@@ -48,7 +48,7 @@ typedef struct SingleEvent{
 } event;
 */ //commented out for routeA.h
 
-void getFile(event evt[6], char Map[1000], e[100]){// ARRAY INSIDE OF ARRAY
+void getFileB(event evt[6], char Map[1000], int e[100]){// ARRAY INSIDE OF ARRAY
 				// take array E[6] and put it in another array
 				// in main that's just the crossed off places
 				// player has been
@@ -123,6 +123,51 @@ void getFile(event evt[6], char Map[1000], e[100]){// ARRAY INSIDE OF ARRAY
 				fseek(rte,1,SEEK_CUR);
 			}
 			fclose(rte);
+
+			printf("\n--- Loading the map ---\n");
+			printf("Map:\n%s\n", Map);
+
+			int i, choice;
+
+			for (i = 0; i < 6; i++) 
+			{
+    				printf("\n-----------------------\n");
+    				printf("Event %d:\n", i + 1);
+    				printf("%s\n", evt[i].string);
+
+    				printf("1. %s", evt[i].char1Adv);
+    				printf("2. %s", evt[i].char2Adv);
+    				printf("Choice: ");
+
+    				scanf("%d", &choice);
+    				while (getchar() != '\n');
+
+    				if (choice == 1) 
+				{
+       		 			printf("Good outcome\n");
+
+        				if (evt[i].outputType == 0)
+            					printf("Health +%.0f\n", evt[i].outputAmtGood);
+        				else if (evt[i].outputType == 1)
+            					printf("Resources +%.0f\n", evt[i].outputAmtGood);
+        				else
+            					printf("Dabloons +%.0f\n", evt[i].outputAmtGood);
+    				}
+    
+				else 
+				{
+        					printf("Bad outcome!\n");
+
+        					if (evt[i].outputType == 0)
+            						printf("Health %.0f\n", evt[i].outputAmtBad);
+        					else if (evt[i].outputType == 1)
+            						printf("Resources %.0f\n", evt[i].outputAmtBad);
+        					else
+            						printf("Dabloons %.0f\n", evt[i].outputAmtBad);
+    				}
+			}
+
+		printf("\n🎉 Route Complete!\n");
 		}
 	}
 }

@@ -1,5 +1,5 @@
-#ifndef ROUTEA_H
-#define ROUTEA_H
+#ifndef ROUTEB_H
+#define ROUTEB_H
 typedef struct SingleEvent{
 	int threshold;
 
@@ -21,5 +21,5 @@ typedef struct SingleEvent{
 	char string[1000];
 } event;
 
-void getFile(event evt[6], char Map[1000], e[100]);
+void getFileB(event evt[6], char Map[1000], int e[100]);
 #endif
