@@ -119,7 +119,6 @@ void getFileB(event evt[6], char Map[1000], int e[100]){// ARRAY INSIDE OF ARRAY
 				fgets(evt[x].char1Adv,50,rte);
 				fgets(evt[x].char2Adv,50,rte);
 				fgets(evt[x].string,1000,rte);
-				printf("POS: %d\n",ftell(rte));
 				fseek(rte,1,SEEK_CUR);
 			}
 			fclose(rte);
