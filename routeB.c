@@ -126,7 +126,7 @@ void getFileB(event evt[6], char Map[1000], int e[100]){// ARRAY INSIDE OF ARRAY
 			printf("\n--- Loading the map ---\n");
 			printf("Map:\n%s\n", Map);
 
-			int i, choice;
+			int i, choice, chance;
 
 			for (i = 0; i < 6; i++) 
 			{
@@ -134,14 +134,32 @@ void getFileB(event evt[6], char Map[1000], int e[100]){// ARRAY INSIDE OF ARRAY
     				printf("Event %d:\n", i + 1);
     				printf("%s\n", evt[i].string);
 
-    				printf("1. %s", evt[i].char1Adv);
-    				printf("2. %s", evt[i].char2Adv);
+    				printf("Character 1. %s", evt[i].char1Adv);
+    				printf("Character 2. %s", evt[i].char2Adv);
     				printf("Choice: ");
+					
+					int checky;
+					
+					srand(time(NULL));
+					chance = rand() % 100+1;
 
-    				scanf("%d", &choice);
+				while (check != 1){
+					scanf("%d", &choice);
     				while (getchar() != '\n');
-
-    				if (choice == 1) 
+					if (choice = 1){
+						adv = evt[i].char1Adv;
+						checky = 1;
+					}
+					else if (choice = 2){
+						adv = evt[i].char2Adv;
+						checky = 1;
+					}
+					else
+						printf("Invalid response, please try again: ");
+						}
+			}
+				
+    				if (chance >= (evt[i].threshold*adv)) 
 				{
        		 			printf("Good outcome\n");
 
