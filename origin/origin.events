@@ -1,0 +1,53 @@
+75
+2 1.5
+1 1
+200 1
+400 0 2
+Banker
+Anybody
+You encounter a few people trying to barter some of your carriage parts for some dabloons. Do you accept?
+
+50
+2 2
+1 1
+0 1
+350 -50 2
+Hunter
+Anybody
+There's some hunting grounds ahead. Do you take the opportunity to hunt?
+
+35
+1.7 1
+1 1
+0 1
+25 5 1
+Farmer
+Anybody
+Walking along the trail, the party sees an abandoned outpost with some edible crop. Do you want to harvest it?
+
+35
+2.4 0.5
+1 1
+0 0
+0 -16 0
+Doctor
+Anybody
+It seems that one of the party has come down a little bit sick. Do you want to try to treat it?
+
+65
+1.5 1
+1 1
+0 1
+-10 -50 1
+Carpenter
+Anybody
+The back of the carriage broke! If you act fast, you can repair it before your items fall out!
+
+20
+2.5 1
+1 1
+0 1
+-10 -35 2
+Lawyer
+Anybody
+The party approaches a crossing, they ask for money to allow passage on the route. Do you pay up or negotiate?
